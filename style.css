@@ -1,0 +1,490 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #ff8f56;
+  --secondary-color: #2f281e;
+  --text-color: #544837;
+  --bg-light: #ffffff;
+  --bg-off-white: #fdf8f6;
+  --font-main: "Poppins", sans-serif;
+
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+
+  --container-width: 1100px;
+  --border-radius: 8px;
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: var(--bg-light);
+  overflow-x: hidden; /* Prevents horizontal scroll when menu is open */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+/* Container Utility */
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Button Utilities */
+.btn-primary,
+.btn-secondary,
+.btn-login,
+.btn-signup {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.btn-secondary img {
+  width: 24px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* =========================================
+   2. BASE STYLES (MOBILE PORTRAIT VIEW)
+   This section defines how the site looks on a phone.
+   ========================================= */
+
+/* Header & Nav */
+header {
+  padding: 1rem 0;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 30px;
+}
+
+/* HAMBURGER BUTTON (Visible by default on mobile) */
+.hamburger {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1100;
+}
+
+.hamburger img {
+  width: 30px;
+  height: auto;
+}
+
+/* MOBILE NAV MENU (The "Pop Up" Logic) */
+/* By default, this is a sidebar hidden off-screen */
+header nav {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Hidden off-screen to the right */
+  width: 75%; /* Takes up 75% of mobile screen */
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out; /* Smooth slide effect */
+  z-index: 1000;
+  padding-top: 5rem; /* Space for close button area */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ACTIVE STATE: When JavaScript adds this class, the menu appears */
+header nav.active {
+  right: 0;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+header nav ul li a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+  display: block;
+}
+
+/* Auth buttons are hidden on small mobile to save space */
+/* Or you can move them inside the <nav> in HTML to show them here */
+.auth-buttons {
+  display: none;
+}
+
+/* Hero Section (Stacked for Mobile) */
+section {
+  padding: var(--spacing-md) 0;
+}
+
+.hero-content {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  margin-bottom: 2rem;
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Features Grid (1 Column for Mobile) */
+h2 {
+  font-size: 1.75rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.feature-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.feature-card img {
+  margin: 0 auto 1rem;
+  width: 50px;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.center-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Detailed Sections (Stacked: Image + Text) */
+.text-content {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.text-content span {
+  font-weight: 600;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.feature-list,
+.checklist {
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.feature-list li,
+.checklist li {
+  margin-bottom: 1.5rem;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.checklist img {
+  width: 24px;
+  flex-shrink: 0;
+}
+
+/* Banner CTA */
+.banner-cta {
+  background-color: var(--bg-off-white);
+  text-align: center;
+  border-radius: var(--border-radius);
+  margin: 2rem 0; /* Full width or small margin on mobile */
+  padding: 3rem 1rem;
+}
+
+/* Blog Grid (1 Column) */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.blog-card h3 a {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+/* Footer (Stacked) */
+footer {
+  padding: 3rem 0 1rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.footer-col {
+  margin-bottom: 2rem;
+}
+
+.footer-col h4 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-col form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-col input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.copyright {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* =========================================
+   3. MEDIA QUERIES
+   Only for Larger Screens (Landscape Phone, Tablet, Laptop)
+   ========================================= */
+
+/* A. TABLET / LANDSCAPE PHONE (min-width: 768px) 
+   We keep the hamburger here usually, but we switch content layout to side-by-side */
+@media (min-width: 768px) {
+  /* Typography Size Up */
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+
+  /* Hero: Switch to Side-by-Side */
+  section[aria-label="Introduction"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    text-align: left;
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .hero-image {
+    flex: 1;
+  }
+
+  .cta-group {
+    flex-direction: row; /* Buttons side by side */
+  }
+
+  /* Features: 2 Columns */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Detailed Sections: Side-by-Side */
+  section[aria-labelledby="design-heading"],
+  section[aria-labelledby="pm-heading"],
+  section[aria-labelledby="marketer-heading"] {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    text-align: left;
+  }
+
+  .text-content {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .image-content {
+    flex: 1;
+  }
+
+  /* Zig-Zag Effect */
+  section[aria-labelledby="pm-heading"] {
+    flex-direction: row-reverse;
+  }
+
+  /* Blog: 3 Columns */
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer: Grid Layout */
+  footer .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr;
+    text-align: left;
+    gap: 2rem;
+  }
+
+  .footer-col {
+    margin-bottom: 0;
+  }
+}
+
+/* B. LAPTOP & DESKTOP (min-width: 1024px)
+   Here we REMOVE the mobile menu and show the full navigation */
+@media (min-width: 1024px) {
+  /* Hide the Hamburger */
+  .hamburger {
+    display: none;
+  }
+
+  /* RESET Mobile Nav Styles to Desktop Styles */
+  header nav {
+    position: static; /* No longer fixed */
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    padding-top: 0;
+    display: block; /* Always visible */
+    transform: none;
+    right: auto;
+    flex-direction: row; /* Horizontal */
+  }
+
+  header nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  header nav ul li a {
+    font-size: 1rem; /* Standard size */
+    font-weight: 400;
+  }
+
+  /* Show Auth Buttons on Desktop */
+  .auth-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-login {
+    background: transparent;
+    color: var(--secondary-color);
+  }
+
+  /* Features: 4 Columns */
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+}
