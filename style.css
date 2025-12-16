@@ -221,7 +221,8 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 10rem;
+  padding: 30px;
 }
 
 .feature-card {
@@ -345,7 +346,8 @@ footer {
 #pricing {
   border-radius: 40% 50% 0% 0%;
   background-image: linear-gradient(rgb(255, 255, 255), rgb(243, 231, 223));
-  margin-bottom: 10rem;
+  margin-top: 10rem;
+  padding: 10rem;
 }
 
 @media (min-width: 768px) {
@@ -357,7 +359,6 @@ footer {
     font-size: 2rem;
   }
 
-  /* Hero: Switch to Side-by-Side */
   section[aria-label="Introduction"] {
     display: flex;
     align-items: center;
