@@ -26,12 +26,17 @@
   box-sizing: border-box;
 }
 
+section {
+  margin: 0 40px;
+  padding: 0 40px;
+}
+
 body {
   font-family: var(--font-main);
   color: var(--text-color);
   line-height: 1.6;
   background-color: var(--bg-light);
-  overflow-x: hidden; /* Prevents horizontal scroll when menu is open */
+  overflow-x: hidden;
 }
 
 img {
@@ -105,11 +110,6 @@ a {
   border: 0;
 }
 
-/* =========================================
-   2. BASE STYLES (MOBILE PORTRAIT VIEW)
-   This section defines how the site looks on a phone.
-   ========================================= */
-
 /* Header & Nav */
 header {
   padding: 1rem 0;
@@ -145,25 +145,22 @@ header .container {
   height: auto;
 }
 
-/* MOBILE NAV MENU (The "Pop Up" Logic) */
-/* By default, this is a sidebar hidden off-screen */
 header nav {
   position: fixed;
   top: 0;
-  right: -100%; /* Hidden off-screen to the right */
-  width: 75%; /* Takes up 75% of mobile screen */
+  right: -100%;
+  /width: 75%;
   height: 100vh;
   background-color: #fff;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease-in-out; /* Smooth slide effect */
+  transition: right 0.3s ease-in-out;
   z-index: 1000;
-  padding-top: 5rem; /* Space for close button area */
+  padding-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ACTIVE STATE: When JavaScript adds this class, the menu appears */
 header nav.active {
   right: 0;
 }
@@ -183,13 +180,10 @@ header nav ul li a {
   display: block;
 }
 
-/* Auth buttons are hidden on small mobile to save space */
-/* Or you can move them inside the <nav> in HTML to show them here */
 .auth-buttons {
   display: none;
 }
 
-/* Hero Section (Stacked for Mobile) */
 section {
   padding: var(--spacing-md) 0;
 }
@@ -217,7 +211,6 @@ section {
   align-items: center;
 }
 
-/* Features Grid (1 Column for Mobile) */
 h2 {
   font-size: 1.75rem;
   color: var(--secondary-color);
@@ -256,7 +249,6 @@ h2 {
   margin-top: 2rem;
 }
 
-/* Detailed Sections (Stacked: Image + Text) */
 .text-content {
   margin-bottom: 2rem;
   text-align: center;
@@ -291,16 +283,14 @@ h2 {
   flex-shrink: 0;
 }
 
-/* Banner CTA */
 .banner-cta {
   background-color: var(--bg-off-white);
   text-align: center;
   border-radius: var(--border-radius);
-  margin: 2rem 0; /* Full width or small margin on mobile */
+  margin: 2rem 0;
   padding: 3rem 1rem;
 }
 
-/* Blog Grid (1 Column) */
 .blog-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -348,13 +338,18 @@ footer {
   color: #999;
 }
 
-/* =========================================
-   3. MEDIA QUERIES
-   Only for Larger Screens (Landscape Phone, Tablet, Laptop)
-   ========================================= */
+#product {
+  border-radius: 0% 0% 40% 50%;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(243, 231, 223));
+  margin-bottom: 10rem;
+}
 
-/* A. TABLET / LANDSCAPE PHONE (min-width: 768px) 
-   We keep the hamburger here usually, but we switch content layout to side-by-side */
+#pricing {
+  border-radius: 40% 50% 0% 0%;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(243, 231, 223));
+  margin-bottom: 10rem;
+}
+
 @media (min-width: 768px) {
   /* Typography Size Up */
   .hero-content h1 {
@@ -384,15 +379,13 @@ footer {
   }
 
   .cta-group {
-    flex-direction: row; /* Buttons side by side */
+    flex-direction: row;
   }
 
-  /* Features: 2 Columns */
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Detailed Sections: Side-by-Side */
   section[aria-labelledby="design-heading"],
   section[aria-labelledby="pm-heading"],
   section[aria-labelledby="marketer-heading"] {
@@ -412,17 +405,14 @@ footer {
     flex: 1;
   }
 
-  /* Zig-Zag Effect */
   section[aria-labelledby="pm-heading"] {
     flex-direction: row-reverse;
   }
 
-  /* Blog: 3 Columns */
   .blog-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Footer: Grid Layout */
   footer .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1.5fr;
@@ -435,26 +425,22 @@ footer {
   }
 }
 
-/* B. LAPTOP & DESKTOP (min-width: 1024px)
-   Here we REMOVE the mobile menu and show the full navigation */
 @media (min-width: 1024px) {
-  /* Hide the Hamburger */
   .hamburger {
     display: none;
   }
 
-  /* RESET Mobile Nav Styles to Desktop Styles */
   header nav {
-    position: static; /* No longer fixed */
+    position: static;
     width: auto;
     height: auto;
     background: transparent;
     box-shadow: none;
     padding-top: 0;
-    display: block; /* Always visible */
+    display: block;
     transform: none;
     right: auto;
-    flex-direction: row; /* Horizontal */
+    flex-direction: row;
   }
 
   header nav ul {
@@ -463,11 +449,10 @@ footer {
   }
 
   header nav ul li a {
-    font-size: 1rem; /* Standard size */
+    font-size: 1rem;
     font-weight: 400;
   }
 
-  /* Show Auth Buttons on Desktop */
   .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -479,7 +464,6 @@ footer {
     color: var(--secondary-color);
   }
 
-  /* Features: 4 Columns */
   .features-grid {
     grid-template-columns: repeat(4, 1fr);
   }
