@@ -1,6 +1,4 @@
-/* =========================================
-   1. VARIABLES & RESET
-   ========================================= */
+/* Universal styling */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
@@ -55,7 +53,7 @@ a {
   transition: var(--transition);
 }
 
-/* Container Utility */
+/* Container styling*/
 .container {
   width: 90%;
   max-width: var(--container-width);
@@ -63,7 +61,7 @@ a {
   padding: 0 var(--spacing-sm);
 }
 
-/* Button Utilities */
+/* Button styling */
 .btn-primary,
 .btn-secondary,
 .btn-login,
@@ -130,7 +128,7 @@ header .container {
   height: 30px;
 }
 
-/* HAMBURGER BUTTON (Visible by default on mobile) */
+/* HAMBURGER BUTTON  */
 .hamburger {
   display: block;
   background: none;
@@ -149,7 +147,7 @@ header nav {
   position: fixed;
   top: 0;
   right: -100%;
-  /width: 75%;
+  width: 75%;
   height: 100vh;
   background-color: #fff;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
