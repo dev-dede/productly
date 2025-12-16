@@ -178,6 +178,11 @@ header nav ul li a {
   display: block;
 }
 
+header nav ul li a:hover{
+    cursor: pointer;
+    color: orange;
+}
+
 .auth-buttons {
   display: none;
 }
